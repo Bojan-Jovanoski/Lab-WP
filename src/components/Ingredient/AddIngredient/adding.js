@@ -69,4 +69,4 @@ const AddIngredient = (props) => {
     )
 };
 
-export default AddIngredient;
+export default withRouter(AddIngredient);

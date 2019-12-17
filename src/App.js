@@ -9,13 +9,14 @@ import IngredientList from "./components/Ingredient/IngredientList/ingredientlis
 import PizzaList from "./components/Pizza/PizzaList/pizzalist";
 import EditIngredient from "./components/Ingredient/EditIngredient/editingredient";
 import AddIngredient from "./components/Ingredient/AddIngredient/adding";
+import IngredientDetails from "./components/Ingredient/IngredientDetails/IngredientDetails";
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       pizzas: [],
-      ingredients: []
+      ingredients: [],
     }
   }
 
@@ -34,6 +35,7 @@ class App extends Component {
       });
     });
   }
+
 
   loadIngredients() {
     IngredientService.fetchIngredients().then(resp => {
@@ -109,6 +111,10 @@ class App extends Component {
             </Route>
             <Route path="/ingredients/new" exact
                    render={() => <AddIngredient onSubmit={this.addNewIngredient}/>}>
+            </Route>
+
+            <Route path="/ingredients/:id/details" exact
+                   render={() => <IngredientDetails/>}>
             </Route>
             <Redirect to={"/ingredients"}/>
           </div>

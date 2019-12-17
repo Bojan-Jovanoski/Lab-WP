@@ -12,9 +12,5 @@ const PizzaService = {
             }
         })
     },
-
-    fetchPizzaIngredients: () => {
-        return axios.get("/pizzas/:id/ingredients");
-    }
 }
 export default PizzaService;

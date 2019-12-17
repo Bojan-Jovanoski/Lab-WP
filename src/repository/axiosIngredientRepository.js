@@ -13,10 +13,14 @@ const IngredientService = {
     },
 
 
+
     deleteIngredient(ingredientID) {
         return axios.delete("/ingredients/" + ingredientID)
     },
 
+    fetchPizzaIngredients: (id) => {
+        return axios.get("/ingredients/"+ id +"/pizzas");
+    },
 
     addIngredient: (ingredient) => {
         const data = {
