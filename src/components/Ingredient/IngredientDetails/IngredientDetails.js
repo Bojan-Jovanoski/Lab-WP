@@ -16,11 +16,13 @@ const IngredientDetails = (props) => {
         axios.get("/ingredients/" + id + "/pizzas").then((data) => {
             const pizzas = data.data.map((pizza, index) => {
                 return (
-                    <div className="col-md-6">
-                        {pizza.name}
-                    <br/>
-                    <hr/>
-                </div>
+                    <div className="card-header">
+                        <div className="row">
+                            <div className="col-md-6">
+                                {pizza.name}
+                            </div>
+                        </div>
+                    </div>
                 );
             });
             setPizza(pizzas);
@@ -30,19 +32,19 @@ const IngredientDetails = (props) => {
 
     const PizzaBody = () => {
         return (
-            <div className="card-header">
-                <div className="row">
+                <div>
                     {pizzaIngredients}
-                </div>
             </div>
         );
     };
 
     return (
         <div className={props.colClass}>
+            <div className="card">
                 <div className="pizzas">
                     {PizzaBody()}
                 </div>
+            </div>
         </div>
     )
 };
