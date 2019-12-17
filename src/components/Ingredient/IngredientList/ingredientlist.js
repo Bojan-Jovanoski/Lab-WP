@@ -4,11 +4,13 @@ import Ingredient from "../ingredient";
 
 const IngredientList = (props) => {
     const ingredients = props.ingredients.map((ingredient, index) => {
+
         return (
-            <Ingredient ingredient={ingredient} key={index} colClass={"col-md-6 mt-2 col-sm-12"}/>
+            <Ingredient onDelete={props.onDelete} ingredient={ingredient} key={index} colClass={"col-md-6 mt-2 col-sm-12"}/>
         );
     });
     return (
+
         <div className="row">
             <h4 className="text-upper text-left">Ingredients</h4>
             <div className="table-responsive">

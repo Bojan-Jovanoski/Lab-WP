@@ -1,6 +1,5 @@
 import axios from '../custom-axios/axios'
-import qs from 'qs';
-
+import qs from 'qs'
 const IngredientService = {
     fetchIngredients: () => {
         return axios.get("/ingredients");
@@ -11,7 +10,42 @@ const IngredientService = {
                 'page': page, 'page-size': pageSize
             }
         })
+    },
+
+
+    deleteIngredient(ingredientID) {
+        return axios.delete("/ingredients/" + ingredientID)
+    },
+
+
+    addIngredient: (ingredient) => {
+        const data = {
+            ...ingredient,
+            ingredientName: ingredient.name
+        };
+        const formParams = qs.stringify(data);
+        return axios.post("/ingredients", formParams, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+    },
+
+
+    updateIngredient: (ingredient) => {
+        const data = {
+            ...ingredient,
+            name: ingredient.name
+        };
+        const id = ingredient.id;
+        debugger
+        const formParams = qs.stringify(data);
+        return axios.patch("/ingredients/" + id, formParams, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
     }
-}
+};
 
 export default IngredientService;

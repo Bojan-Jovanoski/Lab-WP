@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 class Ingredient extends Component {
     render() {
-        debugger;
-
         return (
             this.slotIngredients()
         );
@@ -23,7 +21,8 @@ class Ingredient extends Component {
                     </Link>
                     <button className="btn btn-sm btn-outline-secondary ">
                         <span className="fa fa-remove"/>
-                        <span><strong>Remove</strong></span>
+                        <a onClick={()=>this.props.onDelete(this.props.ingredient.id)} className="btn btn-danger" title="Избриши">
+                        </a>
                     </button>
                     <button className="btn btn-sm btn-outline-dark">
                         <span><strong>Details</strong></span>
